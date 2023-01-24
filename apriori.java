@@ -114,14 +114,15 @@ public class apriori
                 }
             }
 
-            for(Iterator<Map.Entry<Set<String>, Integer>> it = temp3.entrySet().iterator(); it.hasNext(); )
-            {
-                Map.Entry<Set<String>, Integer> entry = it.next();
-                if (entry.getValue() < minSupCount)
-                {
-                    it.remove();
-                }
-            }
+            HashMap<Set<String>, Integer> temp4 = new HashMap<>();
+            for (Map.Entry<Set<String>, Integer> entry : temp3.entrySet())
+                        {
+                            if (entry.getValue() >= minSupCount)
+                            {
+                                temp4.put(entry.getKey(), entry.getValue());
+                            }
+                        }
+            temp3=temp4;
 
             if (temp3.isEmpty())
             {
